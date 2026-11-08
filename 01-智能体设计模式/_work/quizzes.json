@@ -1,0 +1,834 @@
+[
+ {
+  "chapterId": "ch00",
+  "type": "single",
+  "question": "能调用搜索 API 获取最新信息，但不会做多步规划，按书里的分级属于？",
+  "options": [
+   "Level 0 核心推理引擎",
+   "Level 1 连接型问题解决者",
+   "Level 2 战略型问题解决者",
+   "Level 3 多智能体系统"
+  ],
+  "answer": 1,
+  "explain": "有工具连接但没有战略规划与上下文工程，属于 Level 1。",
+  "id": "q01"
+ },
+ {
+  "chapterId": "ch00",
+  "type": "multi",
+  "question": "智能体区别于传统程序的特征包括？",
+  "options": [
+   "自主性",
+   "主动性",
+   "工具使用",
+   "完全确定性"
+  ],
+  "answer": [
+   0,
+   1,
+   2
+  ],
+  "explain": "D 相反，智能体是概率性的。",
+  "id": "q02"
+ },
+ {
+  "chapterId": "ch01",
+  "type": "single",
+  "question": "提示链最有价值的地方是？",
+  "options": [
+   "让模型多回答几次",
+   "把整体推断拆成可独立验证的局部转换",
+   "增加 token 消耗",
+   "替代反思"
+  ],
+  "answer": 1,
+  "explain": "链条的价值是错误局部化，判据是每一步输出能否被独立验证。",
+  "id": "q03"
+ },
+ {
+  "chapterId": "ch01",
+  "type": "blank",
+  "question": "判断一步该不该拆出去的判据是：这一步的输出能否被______。",
+  "options": [],
+  "answer": "独立验证",
+  "explain": "不可验证的粒度拆出去没有收益。",
+  "id": "q04"
+ },
+ {
+  "chapterId": "ch02",
+  "type": "single",
+  "question": "路由必须保留的默认路径叫？",
+  "options": [
+   "主分支",
+   "兜底分支",
+   "快速路径",
+   "缓存路径"
+  ],
+  "answer": 1,
+  "explain": "没有兜底分支时，未匹配输入会直接失败。",
+  "id": "q05"
+ },
+ {
+  "chapterId": "ch02",
+  "type": "multi",
+  "question": "下列哪些是书里提到的路由实现方式？",
+  "options": [
+   "LLM 路由",
+   "嵌入相似度路由",
+   "规则路由",
+   "判别模型路由"
+  ],
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "explain": "四种都提到，按成本-延迟-灵活度取舍。",
+  "id": "q06"
+ },
+ {
+  "chapterId": "ch03",
+  "type": "single",
+  "question": "两个子任务 A、B,判断能否平行的核心判据是？",
+  "options": [
+   "A 和 B 是否同类型",
+   "B 需不需要 A 的输出",
+   "A 是否比 B 慢",
+   "两者是否用同一模型"
+  ],
+  "answer": 1,
+  "explain": "判据一句话：B 需不需要 A 的输出。",
+  "id": "q07"
+ },
+ {
+  "chapterId": "ch03",
+  "type": "single",
+  "question": "投票并行最能压住哪类错误？",
+  "options": [
+   "模型对概念的系统性误解",
+   "随机性错误",
+   "检索源错误",
+   "权限越界"
+  ],
+  "answer": 1,
+  "explain": "同一模型同上下文的系统性错误高度相关，投票只会强化它。",
+  "id": "q08"
+ },
+ {
+  "chapterId": "ch04",
+  "type": "single",
+  "question": "反思回路必须写死的两个出口条件是？",
+  "options": [
+   "判据通过 与 轮次上限",
+   "温度 与 top_p",
+   "模型 与 提示",
+   "日志 与 告警"
+  ],
+  "answer": 0,
+  "explain": "缺出口会陷入过度修正或空转；实践值 2~3 轮。",
+  "id": "q09"
+ },
+ {
+  "chapterId": "ch04",
+  "type": "single",
+  "question": "没有外部判据的反思最可能出现什么？",
+  "options": [
+   "幻觉消失",
+   "过度修正与批评空转",
+   "成本下降",
+   "延迟降低"
+  ],
+  "answer": 1,
+  "explain": "无判据时模型只能凭感觉改，越改越偏。",
+  "id": "q10"
+ },
+ {
+  "chapterId": "ch05",
+  "type": "single",
+  "question": "工具循环中真正执行工具（碰网络）的是？",
+  "options": [
+   "模型本身",
+   "框架",
+   "提示词",
+   "终端用户"
+  ],
+  "answer": 1,
+  "explain": "框架是唯一执行者，模型只生成调用意图，这是安全设计的起点。",
+  "id": "q11"
+ },
+ {
+  "chapterId": "ch05",
+  "type": "multi",
+  "question": "工具描述里应该包含？",
+  "options": [
+   "参数类型与取值范围",
+   "什么情况下不要用这个工具",
+   "示例调用",
+   "只有功能简介"
+  ],
+  "answer": [
+   0,
+   1,
+   2
+  ],
+  "explain": "负向说明能显著压低误触发；只有功能简介不够。",
+  "id": "q12"
+ },
+ {
+  "chapterId": "ch06",
+  "type": "single",
+  "question": "计划形态该选清单式、DAG 还是迭代式，取决于？",
+  "options": [
+   "任务规模",
+   "不确定性放在哪一层",
+   "模型能力",
+   "团队习惯"
+  ],
+  "answer": 1,
+  "explain": "路径确定用清单，依赖复杂用 DAG,需要边走边看用迭代。",
+  "id": "q13"
+ },
+ {
+  "chapterId": "ch06",
+  "type": "blank",
+  "question": "重规划的三个触发条件是连续失败达阈值、判据不符、______。",
+  "options": [],
+  "answer": "约束显式变化",
+  "explain": "三者任一触发，且重规划必须重新检查全部依赖。",
+  "id": "q14"
+ },
+ {
+  "chapterId": "ch07",
+  "type": "single",
+  "question": "多智能体拆分最不该基于下面哪个理由？",
+  "options": [
+   "上下文拥挤",
+   "角色能力冲突",
+   "错误无人对照",
+   "想让系统看起来更高级"
+  ],
+  "answer": 3,
+  "explain": "只有前三类真实问题值得拆。",
+  "id": "q15"
+ },
+ {
+  "chapterId": "ch07",
+  "type": "multi",
+  "question": "批评-审查者的评审标准包括？",
+  "options": [
+   "政策与安全",
+   "合规与正确性",
+   "质量与目标对齐",
+   "模型价格"
+  ],
+  "answer": [
+   0,
+   1,
+   2
+  ],
+  "explain": "六类标准涵盖政策、安全、合规、正确性、质量、目标对齐。",
+  "id": "q16"
+ },
+ {
+  "chapterId": "ch08",
+  "type": "single",
+  "question": "state 里前缀 user: 表示？",
+  "options": [
+   "仅本轮有效",
+   "跨会话对该用户有效",
+   "全局共享",
+   "只读"
+  ],
+  "answer": 1,
+  "explain": "user: 跨会话、app: 全局、temp: 仅本轮。",
+  "id": "q17"
+ },
+ {
+  "chapterId": "ch08",
+  "type": "single",
+  "question": "直接修改 session.state 的主要问题是？",
+  "options": [
+   "性能下降",
+   "绕过事件处理导致不记录、不持久化、并发冲突",
+   "模型无法读取",
+   "增加 token"
+  ],
+  "answer": 1,
+  "explain": "应走 output_key 或 state_delta。",
+  "id": "q18"
+ },
+ {
+  "chapterId": "ch09",
+  "type": "single",
+  "question": "让智能体学会公司报销规则，最合适的方式是？",
+  "options": [
+   "强化学习",
+   "知识写进知识库并用 RAG 检索",
+   "从头预训练",
+   "自我修改代码"
+  ],
+  "answer": 1,
+  "explain": "这是知识缺失而非策略问题，记忆+检索成本最低。",
+  "id": "q19"
+ },
+ {
+  "chapterId": "ch09",
+  "type": "single",
+  "question": "SICA 这类自改代码智能体必须具备的配套是？",
+  "options": [
+   "更快的 GPU",
+   "异步监督者与容器隔离",
+   "更大的上下文窗口",
+   "更多训练数据"
+  ],
+  "answer": 1,
+  "explain": "没有监督者会陷入无效迭代，没有隔离会伤到主机。",
+  "id": "q20"
+ },
+ {
+  "chapterId": "ch10",
+  "type": "single",
+  "question": "3 个应用与 5 个系统，用 MCP 后需要多少实现？",
+  "options": [
+   "15",
+   "8",
+   "5",
+   "3"
+  ],
+  "answer": 1,
+  "explain": "无标准 3×5=15；有标准 3+5=8。",
+  "id": "q21"
+ },
+ {
+  "chapterId": "ch10",
+  "type": "single",
+  "question": "MCP 效果高度依赖什么？",
+  "options": [
+   "模型参数规模",
+   "底层 API 的设计（是否支持过滤排序与文本返回）",
+   "网络带宽",
+   "客户端数量"
+  ],
+  "answer": 1,
+  "explain": "只把传统 API 原样包一层，智能体表现会很差。",
+  "id": "q22"
+ },
+ {
+  "chapterId": "ch11",
+  "type": "single",
+  "question": "判断一个目标是否成立的核心条件是？",
+  "options": [
+   "写得够长",
+   "可被判断是否达成（指标、阈值、时限、判定者）",
+   "有激励语气",
+   "由模型自己判断"
+  ],
+  "answer": 1,
+  "explain": "不可判定的目标不是目标。",
+  "id": "q23"
+ },
+ {
+  "chapterId": "ch11",
+  "type": "multi",
+  "question": "监控需要观测哪些对象？",
+  "options": [
+   "行为",
+   "环境",
+   "工具输出",
+   "判据"
+  ],
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "explain": "四类观测缺一不可。",
+  "id": "q24"
+ },
+ {
+  "chapterId": "ch12",
+  "type": "single",
+  "question": "重试策略的硬要求是？",
+  "options": [
+   "重试次数越多越好",
+   "操作幂等",
+   "降低温度",
+   "换模型"
+  ],
+  "answer": 1,
+  "explain": "非幂等操作重试等于重复副作用。",
+  "id": "q25"
+ },
+ {
+  "chapterId": "ch12",
+  "type": "single",
+  "question": "下列哪个是典型的“看起来成功的失败”？",
+  "options": [
+   "接口返回 500",
+   "返回 {\"stock\": null} 而流程继续",
+   "超时无响应",
+   "鉴权失败"
+  ],
+  "answer": 1,
+  "explain": "结构合法但值为空，下游不校验就会当成功处理。",
+  "id": "q26"
+ },
+ {
+  "chapterId": "ch13",
+  "type": "single",
+  "question": "是否插入人类审批最实用的判据是？",
+  "options": [
+   "任务难度",
+   "错了能不能撤回",
+   "成本高低",
+   "模型是否自信"
+  ],
+  "answer": 1,
+  "explain": "不可撤回的操作必须插人。",
+  "id": "q27"
+ },
+ {
+  "chapterId": "ch13",
+  "type": "single",
+  "question": "Human-on-the-loop 适合什么场景？",
+  "options": [
+   "单次价值极高的贷款审批",
+   "高频、单次价值低、规则可写清",
+   "规则无法表达的创意判断",
+   "司法判决"
+  ],
+  "answer": 1,
+  "explain": "人定规则、AI 实时执行，异常时才介入。",
+  "id": "q28"
+ },
+ {
+  "chapterId": "ch14",
+  "type": "single",
+  "question": "余弦相似度为 1 意味着？",
+  "options": [
+   "两向量长度相同",
+   "两向量方向完全一致",
+   "两向量正交",
+   "两向量相等"
+  ],
+  "answer": 1,
+  "explain": "余弦只看夹角，与长度无关。",
+  "id": "q29"
+ },
+ {
+  "chapterId": "ch14",
+  "type": "multi",
+  "question": "RAG 的误差来源包括？",
+  "options": [
+   "分块粒度不当",
+   "嵌入模型与语料不匹配",
+   "只按 top_k 不设相似度阈值",
+   "混合检索"
+  ],
+  "answer": [
+   0,
+   1,
+   2
+  ],
+  "explain": "混合检索是减误差的手段，不是误差源。",
+  "id": "q30"
+ },
+ {
+  "chapterId": "ch15",
+  "type": "single",
+  "question": "A2A 与 MCP 的分工是？",
+  "options": [
+   "A2A 接资源，MCP 接智能体",
+   "A2A 接智能体，MCP 接资源",
+   "两者可互换",
+   "都只做工具调用"
+  ],
+  "answer": 1,
+  "explain": "MCP 向下接资源，A2A 横向接同行。",
+  "id": "q31"
+ },
+ {
+  "chapterId": "ch15",
+  "type": "single",
+  "question": "A2A 通信围绕什么展开？",
+  "options": [
+   "一次性 RPC",
+   "有状态的任务（含 task id 与 contextId）",
+   "文件传输",
+   "共享内存"
+  ],
+  "answer": 1,
+  "explain": "任务有状态机，这是与普通 RPC 的根本差别。",
+  "id": "q32"
+ },
+ {
+  "chapterId": "ch16",
+  "type": "single",
+  "question": "输入 800、输出 200,单价 0.03/0.09（元每千 token），单次成本约？",
+  "options": [
+   "0.024 元",
+   "0.042 元",
+   "0.060 元",
+   "0.006 元"
+  ],
+  "answer": 1,
+  "explain": "(800×0.03+200×0.09)/1000=0.042。",
+  "id": "q33"
+ },
+ {
+  "chapterId": "ch16",
+  "type": "single",
+  "question": "批判智能体在资源优化中的角色是？",
+  "options": [
+   "直接改计费配置",
+   "用质量信号间接校正路由策略",
+   "替代路由器",
+   "计算账单"
+  ],
+  "answer": 1,
+  "explain": "它不直接管预算，靠质量回流修正分流。",
+  "id": "q34"
+ },
+ {
+  "chapterId": "ch17",
+  "type": "single",
+  "question": "任务需要实时汇率再算换算，最合适的组合是？",
+  "options": [
+   "纯 CoT",
+   "ReAct 查数据 + PALMs 算数",
+   "ToT 深搜",
+   "纯自洽投票"
+  ],
+  "answer": 1,
+  "explain": "外部信息用 ReAct,精确计算交给代码执行。",
+  "id": "q35"
+ },
+ {
+  "chapterId": "ch17",
+  "type": "single",
+  "question": "p=0.4、独立采样 3 次，至少一次正确的概率是？",
+  "options": [
+   "0.6",
+   "0.784",
+   "0.4",
+   "0.936"
+  ],
+  "answer": 1,
+  "explain": "1-(0.6)^3=0.784。",
+  "id": "q36"
+ },
+ {
+  "chapterId": "ch18",
+  "type": "single",
+  "question": "唯一能挡住模型“做错事”的护栏层是？",
+  "options": [
+   "输入过滤",
+   "工具调用层（参数与权限校验）",
+   "输出过滤",
+   "提示约束"
+  ],
+  "answer": 1,
+  "explain": "输入挡进、输出挡出，只有工具层挡“动手”。",
+  "id": "q37"
+ },
+ {
+  "chapterId": "ch18",
+  "type": "single",
+  "question": "关键判据为什么不该交给另一个 LLM 自由裁量？",
+  "options": [
+   "成本太高",
+   "护栏模型本身也会被提示注入",
+   "速度太慢",
+   "不支持中文"
+  ],
+  "answer": 1,
+  "explain": "关键判据应优先用规则、白名单、分类器。",
+  "id": "q38"
+ },
+ {
+  "chapterId": "ch19",
+  "type": "single",
+  "question": "传统测试不足以为什么不能胜任智能体评估？",
+  "options": [
+   "测试太慢",
+   "智能体是概率性的，路径会变，且过程可能违规",
+   "测试用例太少",
+   "不支持并发"
+  ],
+  "answer": 1,
+  "explain": "所以要评轨迹而不只评结果。",
+  "id": "q39"
+ },
+ {
+  "chapterId": "ch19",
+  "type": "multi",
+  "question": "LLM-as-a-Judge 的主要偏见包括？",
+  "options": [
+   "位置偏见",
+   "自我偏好",
+   "完全客观",
+   "忽略中间步骤"
+  ],
+  "answer": [
+   0,
+   1,
+   3
+  ],
+  "explain": "C 相反；评审模型并不天然客观。",
+  "id": "q40"
+ },
+ {
+  "chapterId": "ch20",
+  "type": "single",
+  "question": "优先级排序本质上是？",
+  "options": [
+   "评价问题",
+   "调度问题",
+   "容量问题",
+   "心理问题"
+  ],
+  "answer": 1,
+  "explain": "问的是资源有限时下一个做什么。",
+  "id": "q41"
+ },
+ {
+  "chapterId": "ch20",
+  "type": "single",
+  "question": "优先级通胀的解法是？",
+  "options": [
+   "全部标 P0",
+   "设配额，如 P0 最多占 20% 槽位",
+   "按时间排序",
+   "交给模型判断"
+  ],
+  "answer": 1,
+  "explain": "没有配额的 P0 等于没有优先级。",
+  "id": "q42"
+ },
+ {
+  "chapterId": "ch21",
+  "type": "single",
+  "question": "探索与优化的关键区别是？",
+  "options": [
+   "探索更贵",
+   "探索的评分函数尚未明确、解空间未知",
+   "探索必须多智能体",
+   "优化只能用传统算法"
+  ],
+  "answer": 1,
+  "explain": "能写出评分函数是优化的前提。",
+  "id": "q43"
+ },
+ {
+  "chapterId": "ch21",
+  "type": "blank",
+  "question": "AI 联合科学体用 Elo 排名，是因为假设质量难以______。",
+  "options": [],
+  "answer": "绝对打分",
+  "explain": "只能两两比较时用相对评级。",
+  "id": "q44"
+ },
+ {
+  "chapterId": "ch22",
+  "type": "single",
+  "question": "判断该不该继续加模式，最可靠的依据是？",
+  "options": [
+   "竞品用了",
+   "有失败案例支撑，且评估指标证明加之前更差",
+   "模式足够新",
+   "团队熟悉"
+  ],
+  "answer": 1,
+  "explain": "没有失败案例支撑是过度设计。",
+  "id": "q45"
+ },
+ {
+  "chapterId": "ch22",
+  "type": "single",
+  "question": "研究助手案例中，去掉记忆管理会怎样？",
+  "options": [
+   "成本下降",
+   "多步多智能体无法保持一致，上下文要反复重建",
+   "质量提升",
+   "延迟降低"
+  ],
+  "answer": 1,
+  "explain": "记忆是协作的粘合剂。",
+  "id": "q46"
+ },
+ {
+  "chapterId": "ch23",
+  "type": "single",
+  "question": "按书里的定义，“订票”属于？",
+  "options": [
+   "工具",
+   "技能",
+   "模型架构",
+   "训练目标"
+  ],
+  "answer": 1,
+  "explain": "技能是结合多个工具调用与推理形成的集成能力。",
+  "id": "q47"
+ },
+ {
+  "chapterId": "ch23",
+  "type": "single",
+  "question": "Grounding 的作用是？",
+  "options": [
+   "加速推理",
+   "把输出关联到可验证的信息源以减少幻觉",
+   "压缩上下文",
+   "提升并发"
+  ],
+  "answer": 1,
+  "explain": "RAG 是最常用的 grounding 手段。",
+  "id": "q48"
+ },
+ {
+  "chapterId": "ch24",
+  "type": "single",
+  "question": "分类任务中示例全是同一类别连续排列，最可能导致？",
+  "options": [
+   "token 超限",
+   "模型过拟合示例顺序",
+   "拒绝回答",
+   "输出格式错误"
+  ],
+  "answer": 1,
+  "explain": "建议混合不同类别示例的顺序。",
+  "id": "q49"
+ },
+ {
+  "chapterId": "ch24",
+  "type": "single",
+  "question": "要求模型输出 JSON 之后还必须做什么？",
+  "options": [
+   "直接使用",
+   "结构性校验（如 Pydantic）",
+   "再让模型复述",
+   "加密"
+  ],
+  "answer": 1,
+  "explain": "模型会漏字段、给错类型，不校验会在下游炸掉。",
+  "id": "q50"
+ },
+ {
+  "chapterId": "ch25",
+  "type": "single",
+  "question": "ACI 的正确顺序是？",
+  "options": [
+   "截屏→元素识别→上下文理解→操作与反馈",
+   "识别→截屏→操作→理解",
+   "操作→截屏→识别→理解",
+   "理解→截屏→操作→识别"
+  ],
+  "answer": 0,
+  "explain": "先看见，再分辨，再理解，最后动手并观察反馈。",
+  "id": "q51"
+ },
+ {
+  "chapterId": "ch25",
+  "type": "single",
+  "question": "什么情况下应放弃 GUI 自动化？",
+  "options": [
+   "界面稳定、低频、可回滚",
+   "界面频繁改版或操作不可撤回",
+   "任务简单",
+   "有截图权限"
+  ],
+  "answer": 1,
+  "explain": "按“稳不稳、频不频、撤不撤”判断。",
+  "id": "q52"
+ },
+ {
+  "chapterId": "__all__",
+  "type": "multi",
+  "question": "一个客服智能体要做到“答错可追、出错可退、超支可查”,至少需要哪些模式组合？",
+  "options": [
+   "RAG 提供可引用的知识来源",
+   "反思 + 外部判据保证质量",
+   "异常处理 + 幂等保证可退",
+   "资源感知优化 + 评估保证可查"
+  ],
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "explain": "四个方向分别对应可追、可退、可查，可组合使用。",
+  "id": "q53"
+ },
+ {
+  "chapterId": "__all__",
+  "type": "single",
+  "question": "下列哪种做法最可能让系统变差？",
+  "options": [
+   "给链条每步加输出契约",
+   "对非幂等操作加自动重试三次",
+   "为路由加兜底分支",
+   "给反思设轮次上限"
+  ],
+  "answer": 1,
+  "explain": "非幂等重试等于重复副作用。",
+  "id": "q54"
+ },
+ {
+  "chapterId": "__all__",
+  "type": "single",
+  "question": "一个团队想在只有 3 个固定内部工具时引入 MCP,合理的判断是？",
+  "options": [
+   "应当引入，越标准越好",
+   "暂不引入，函数调用更简单可控",
+   "必须引入否则无法扩展",
+   "引入后删除所有函数"
+  ],
+  "answer": 1,
+  "explain": "工具固定少量时函数调用足够，MCP 是过度工程。",
+  "id": "q55"
+ },
+ {
+  "chapterId": "__all__",
+  "type": "blank",
+  "question": "判断“该不该插人”的统一判据是：错了能不能______。",
+  "options": [],
+  "answer": "撤回",
+  "explain": "不可撤回的操作必须审批。",
+  "id": "q56"
+ },
+ {
+  "chapterId": "__all__",
+  "type": "single",
+  "question": "日均 50,000 次调用，单次 0.042 元，70% 路由到 1/5 单价模型，日成本约？",
+  "options": [
+   "2100 元",
+   "924 元",
+   "1470 元",
+   "630 元"
+  ],
+  "answer": 1,
+  "explain": "50000×(0.3×0.042+0.7×0.0084)=924。",
+  "id": "q57"
+ },
+ {
+  "chapterId": "__all__",
+  "type": "multi",
+  "question": "评估一套智能体系统时，哪些是必须看的？",
+  "options": [
+   "最终答案正确率",
+   "轨迹是否合理",
+   "延迟与 token 成本",
+   "协作与分工是否正确"
+  ],
+  "answer": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "explain": "四类都要看，缺一都会漏问题。",
+  "id": "q58"
+ }
+]

@@ -1,0 +1,87 @@
+[
+ {
+  "check": "首页渲染",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "check": "书卡数量",
+  "pass": true,
+  "extra": "1/1"
+ },
+ {
+  "check": "总览页：总览：这本书怎么学，两个深推页在哪",
+  "pass": true,
+  "extra": "909 字符"
+ },
+ {
+  "check": "agentic-design-patterns 首章渲染",
+  "pass": true,
+  "extra": "3064 字符"
+ },
+ {
+  "check": "agentic-design-patterns 末章渲染",
+  "pass": true,
+  "extra": "3582 字符"
+ },
+ {
+  "check": "agentic-design-patterns 测验题数",
+  "pass": true,
+  "extra": "58 题"
+ },
+ {
+  "check": "agentic-design-patterns 测验正确反馈",
+  "pass": true,
+  "extra": "✓ 正确"
+ },
+ {
+  "check": "agentic-design-patterns 测验解析",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "check": "抽认卡正面有内容",
+  "pass": true,
+  "extra": "智能体的五个特征是什么？"
+ },
+ {
+  "check": "抽认卡翻转",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "check": "认识计数增加",
+  "pass": true,
+  "extra": "1"
+ },
+ {
+  "check": "术语表过滤",
+  "pass": true,
+  "extra": "共77 过滤后3（智能体）"
+ },
+ {
+  "check": "全局搜索命中",
+  "pass": true,
+  "extra": "28 条"
+ },
+ {
+  "check": "进度跨刷新持久",
+  "pass": true,
+  "extra": "《智能体设计模式：智能系统构建实战指南》 进度 12% · 已学 3/26 章 → 《智能体设计模式：智能系统构建实战指南》 进度 12% · 已学 3/26 章"
+ },
+ {
+  "check": "学习路径完成标记",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "check": "深色模式",
+  "pass": true,
+  "extra": ""
+ },
+ {
+  "check": "控制台无错误",
+  "pass": true,
+  "extra": ""
+ }
+]
