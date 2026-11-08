@@ -22,6 +22,13 @@
 | `从零推导-RAG.html` | 深推页：RAG 从向量夹角推到检索工程 |
 | `从零推导-反思.html` | 深推页：反思从控制结构推到退化路径 |
 
+## 在线地址
+
+- 站点：https://zrx-11.github.io/agentic-design-patterns-handbook/
+- 仓库：https://github.com/zrx-11/agentic-design-patterns-handbook
+
+原书全文抽取文本（`01-智能体设计模式/_work/raw/`）已通过 `.gitignore` 排除，不随仓库公开。
+
 ## 部署到 GitHub Pages
 
 1. 把本目录下所有文件（含 `.nojekyll`）推到仓库根目录：
